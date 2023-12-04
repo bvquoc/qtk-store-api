@@ -39,7 +39,7 @@ type appConfig struct {
 // @version         1.0
 
 // @contact.name   Bui Vi Quoc
-// @contact.url    https://www.faceproduct.com/bviquoc/
+// @contact.url    https://www.facebook.com/bviquoc/
 // @contact.email  21520095@gm.uit.edu.vn
 
 // @host      localhost:8080
@@ -79,7 +79,6 @@ func main() {
 	v1 := r.Group("/v1")
 	{
 		v1.GET("/docs/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
-
 		authortransport.SetupRoutes(v1, appCtx)
 		categorytransport.SetupRoutes(v1, appCtx)
 		producttransport.SetupRoutes(v1, appCtx)

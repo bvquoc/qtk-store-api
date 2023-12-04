@@ -11,7 +11,7 @@ const docTemplate = `{
         "title": "{{.Title}}",
         "contact": {
             "name": "Bui Vi Quoc",
-            "url": "https://www.faceproduct.com/bviquoc/",
+            "url": "https://www.facebook.com/bviquoc/",
             "email": "21520095@gm.uit.edu.vn"
         },
         "version": "{{.Version}}"
