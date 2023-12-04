@@ -2,11 +2,13 @@
 
 ## I. How to run project
 
-<!-- **Front-end:** `localhost:3000` -->
+```bash
+docker-compose up
+```
 
-**API docs:** `localhost:8080/v1/docs/index.html`
+**API docs:** [localhost:8080/v1/docs/index.html](localhost:8080/v1/docs/index.html)
 
-**Back-end:** `localhost:8080`
+**Back-end:** [localhost:8080/v1](localhost:8080/v1)
 
 **MySQL:**
 
@@ -17,9 +19,3 @@
 - Password: `123456`
 
 - DB Name: `dbqtkstore`
-
-### How to serve the backend?
-
-```bash
-docker-compose up
-```
