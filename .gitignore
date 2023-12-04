@@ -20,11 +20,11 @@ vendor/
 # Go workspace file
 go.work
 
-# config yaml
-*.env
-
 # Mac
 *.DS_Store
 
 # VSCODE
 *.vscode
+
+gin-bin
+/storage

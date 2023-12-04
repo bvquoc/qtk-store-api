@@ -1,54 +1,57 @@
-version: '3'
+version: "3.9"
 services:
-  db:
-    container_name: "my-database"
-    image: "citusdata/citus:11.0"
-    ports: 
-      - "5432:5432"
-    environment: 
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: sample
+  qtk-mysql:
+    container_name: qtk-mysql
+    image: mysql:8.0.33-debian
+    cap_add:
+      - SYS_NICE # CAP_SYS_NICE -> fix: mbind: Operation not permitted
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      # - ./sql/01-init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
+    command: --default-authentication-plugin=mysql_native_password --innodb-buffer-pool-size=6G --group-concat-max-len=4294967295 --innodb_log_buffer_size=256M --innodb_write_io_threads=8 --innodb_flush_log_at_trx_commit=0 --innodb_doublewrite=0
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: dbqtkstore
+    ports:
+      - 39063:3306
+  # cache:
+  #   container_name: cache
+  #   image: redis:7.2-bookworm
+  #   restart: always
+  #   ports:
+  #     - "63790:6379"
+  #   command: redis-server --save 20 1 --loglevel warning --requirepass AvwQcUuAcmNymxrJxz3fCtcGFcc8U5xa
+  qtk-be:
+    image: golang:1.20.7-bookworm
+    container_name: qtk-be
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-  # Need run redis for run some api in app
-  redis:
-    image: redis:latest
-    container_name: "my-redis"
-    ports:
-      - "6379:6379"
+      - .:/data
+      - ./gin:/usr/bin/gin
+    #  - $HOME/.aws:/root/.aws
+    working_dir: /data
     environment:
-      - REDIS_PASSWORD="REDIS_PASSWORD"
-  # Need run elasticsearch for run some api in app
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
-    container_name: "my-elasticsearch"
-    environment:
-      - xpack.security.enabled=false
-      - "discovery.type=single-node"
+      - GOMEMLIMIT=5120MiB
+    entrypoint: "/bin/bash\n -c /data/go-server.sh"
     ports:
-      - 9200:9200
-  # Need run kafka for run some api in app
-  kafka:
-    image: docker.io/bitnami/kafka:3.5
-    ports:
-      - "9092:9092"
-    volumes:
-      - kafka_data:/bitnami
-    environment:
-      # Kafka settings
-      - KAFKA_CFG_NODE_ID=0
-      - KAFKA_CFG_PROCESS_ROLES=controller,broker
-      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
-      # Listeners
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 # You localhost:9092 for dev, use kafka:9092 for docker internal
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
-      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
-      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
-volumes:
-  kafka_data:
-    driver: local
-
-  # https://levelup.gitconnected.com/creating-and-filling-a-postgres-db-with-docker-compose-e1607f6f882f
+      - 8080:8080
+    depends_on:
+      - qtk-mysql
+      # - cache
+    links:
+      - qtk-mysql
+      # - cache
+  # qtk-fe:
+  #   image: lebaotriet/nodejs-18
+  #   container_name: qtk-fe
+  #   volumes:
+  #     - ../frontend:/data
+  #     - ../frontend/entrypoint.sh:/entrypoint.sh
+  #     - ../frontend/nginx.conf:/etc/nginx/sites-available/default
+  #   ports:
+  #     - 3000:3000
+  #   working_dir: /data
+  #   links:
+  #     - qtk-be
+  #   depends_on:
+  #     - qtk-be
