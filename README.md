@@ -1,173 +1,440 @@
-# Nodejs Expressjs MongoDB Ready-to-use API Project Structure
+# RESTful API Node Server Boilerplate
 
-[![Author](http://img.shields.io/badge/author-@maitraysuthar-blue.svg)](https://www.linkedin.com/in/maitray-suthar/) [![GitHub license](https://img.shields.io/github/license/maitraysuthar/rest-api-nodejs-mongodb.svg)](https://github.com/maitraysuthar/rest-api-nodejs-mongodb/blob/master/LICENSE) ![GitHub repo size](https://img.shields.io/github/repo-size/maitraysuthar/rest-api-nodejs-mongodb) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/b3eb80984adc4671988ffb22d6ad83df)](https://www.codacy.com/manual/maitraysuthar/rest-api-nodejs-mongodb?utm_source=github.com&utm_medium=referral&utm_content=maitraysuthar/rest-api-nodejs-mongodb&utm_campaign=Badge_Coverage) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3eb80984adc4671988ffb22d6ad83df)](https://www.codacy.com/manual/maitraysuthar/rest-api-nodejs-mongodb?utm_source=github.com&utm_medium=referral&utm_content=maitraysuthar/rest-api-nodejs-mongodb&utm_campaign=Badge_Grade) ![Travis (.com)](https://img.shields.io/travis/com/maitraysuthar/rest-api-nodejs-mongodb)
+[![Build Status](https://travis-ci.org/hagopj13/node-express-boilerplate.svg?branch=master)](https://travis-ci.org/hagopj13/node-express-boilerplate)
+[![Coverage Status](https://coveralls.io/repos/github/hagopj13/node-express-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/hagopj13/node-express-boilerplate?branch=master)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-A ready-to-use boilerplate for REST API Development with Node.js, Express, and MongoDB
+A boilerplate/starter project for quickly building RESTful APIs using Node.js, Express, and Mongoose.
 
-## Getting started
+By running a single command, you will get a production-ready Node.js app installed and fully configured on your machine. The app comes with many built-in features, such as authentication using JWT, request validation, unit and integration tests, continuous integration, docker support, API documentation, pagination, etc. For more details, check the features list below.
 
-This is a basic API skeleton written in JavaScript ES2015. Very useful to building a RESTful web APIs for your front-end platforms like Android, iOS or JavaScript frameworks (Angular, Reactjs, etc).
+## Quick Start
 
-This project will run on **NodeJs** using **MongoDB** as database. I had tried to maintain the code structure easy as any beginner can also adopt the flow and start building an API. Project is open for suggestions, Bug reports and pull requests.
+To create a project, simply run:
 
-## Advertise for Job/Work Contract
+```bash
+npx create-nodejs-express-app <project-name>
+```
 
-I am open for a good job or work contract. You can contact me directly on my email ([maitraysuthar@gmail.com](mailto:maitraysuthar@gmail.com "maitraysuthar@gmail.com")) or you can download my CV from my personal [website](https://maitraysuthar.github.io/portfolio/).
+Or
 
-## Buy me a Coffee
+```bash
+npm init nodejs-express-app <project-name>
+```
 
-If you consider my project as helpful stuff, You can appreciate me or my hard work and time spent to create this helpful structure with buying me a coffee.
+## Manual Installation
 
-<a href="https://www.buymeacoffee.com/36GgOoQ2f" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+If you would still prefer to do the installation manually, follow these steps:
+
+Clone the repo:
+
+```bash
+git clone --depth 1 https://github.com/hagopj13/node-express-boilerplate.git
+cd node-express-boilerplate
+npx rimraf ./.git
+```
+
+Install the dependencies:
+
+```bash
+yarn install
+```
+
+Set the environment variables:
+
+```bash
+cp .env.example .env
+
+# open .env and modify the environment variables (if needed)
+```
+
+## Table of Contents
+
+- [Features](#features)
+- [Commands](#commands)
+- [Environment Variables](#environment-variables)
+- [Project Structure](#project-structure)
+- [API Documentation](#api-documentation)
+- [Error Handling](#error-handling)
+- [Validation](#validation)
+- [Authentication](#authentication)
+- [Authorization](#authorization)
+- [Logging](#logging)
+- [Custom Mongoose Plugins](#custom-mongoose-plugins)
+- [Linting](#linting)
+- [Contributing](#contributing)
 
 ## Features
 
-- Basic Authentication (Register/Login with hashed password)
-- Account confirmation with 4 (Changeable) digit OTP.
-- Email helper ready just import and use.
-- JWT Tokens, make requests with a token after login with `Authorization` header with value `Bearer yourToken` where `yourToken` will be returned in Login response.
-- Pre-defined response structures with proper status codes.
-- Included CORS.
-- **Book** example with **CRUD** operations.
-- Validations added.
-- Included API collection for Postman.
-- Light-weight project.
-- Test cases with [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
-- Code coverage with [Istanbuljs (nyc)](https://istanbul.js.org/).
-- Included CI (Continuous Integration) with [Travis CI](https://travis-ci.org).
-- Linting with [Eslint](https://eslint.org/).
+- **NoSQL database**: [MongoDB](https://www.mongodb.com) object data modeling using [Mongoose](https://mongoosejs.com)
+- **Authentication and authorization**: using [passport](http://www.passportjs.org)
+- **Validation**: request data validation using [Joi](https://github.com/hapijs/joi)
+- **Logging**: using [winston](https://github.com/winstonjs/winston) and [morgan](https://github.com/expressjs/morgan)
+- **Testing**: unit and integration tests using [Jest](https://jestjs.io)
+- **Error handling**: centralized error handling mechanism
+- **API documentation**: with [swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc) and [swagger-ui-express](https://github.com/scottie1984/swagger-ui-express)
+- **Process management**: advanced production process management using [PM2](https://pm2.keymetrics.io)
+- **Dependency management**: with [Yarn](https://yarnpkg.com)
+- **Environment variables**: using [dotenv](https://github.com/motdotla/dotenv) and [cross-env](https://github.com/kentcdodds/cross-env#readme)
+- **Security**: set security HTTP headers using [helmet](https://helmetjs.github.io)
+- **Santizing**: sanitize request data against xss and query injection
+- **CORS**: Cross-Origin Resource-Sharing enabled using [cors](https://github.com/expressjs/cors)
+- **Compression**: gzip compression with [compression](https://github.com/expressjs/compression)
+- **CI**: continuous integration with [Travis CI](https://travis-ci.org)
+- **Docker support**
+- **Code coverage**: using [coveralls](https://coveralls.io)
+- **Code quality**: with [Codacy](https://www.codacy.com)
+- **Git hooks**: with [husky](https://github.com/typicode/husky) and [lint-staged](https://github.com/okonet/lint-staged)
+- **Linting**: with [ESLint](https://eslint.org) and [Prettier](https://prettier.io)
+- **Editor config**: consistent editor configuration using [EditorConfig](https://editorconfig.org)
 
-## Software Requirements
+## Commands
 
-- Node.js **8+**
-- MongoDB **3.6+** (Recommended **4+**)
-
-## How to install
-
-### Using Git (recommended)
-
-1.  Clone the project from github. Change "myproject" to your project name.
-
-```bash
-git clone https://github.com/maitraysuthar/rest-api-nodejs-mongodb.git ./myproject
-```
-
-### Using manual download ZIP
-
-1.  Download repository
-2.  Uncompress to your desired directory
-
-### Install npm dependencies after installing (Git or manual download)
+Running locally:
 
 ```bash
-cd myproject
-npm install
+yarn dev
 ```
 
-### Setting up environments
-
-1.  You will find a file named `.env.example` on root directory of project.
-2.  Create a new file by copying and pasting the file and then renaming it to just `.env`
-    ```bash
-    cp .env.example .env
-    ```
-3.  The file `.env` is already ignored, so you never commit your credentials.
-4.  Change the values of the file to your environment. Helpful comments added to `.env.example` file to understand the constants.
-
-## Project structure
-
-```sh
-.
-├── app.js
-├── package.json
-├── bin
-│   └── www
-├── controllers
-│   ├── AuthController.js
-│   └── BookController.js
-├── models
-│   ├── BookModel.js
-│   └── UserModel.js
-├── routes
-│   ├── api.js
-│   ├── auth.js
-│   └── book.js
-├── middlewares
-│   ├── jwt.js
-├── helpers
-│   ├── apiResponse.js
-│   ├── constants.js
-│   ├── mailer.js
-│   └── utility.js
-├── test
-│   ├── testConfig.js
-│   ├── auth.js
-│   └── book.js
-└── public
-    ├── index.html
-    └── stylesheets
-        └── style.css
-```
-
-## How to run
-
-### Running API server locally
+Running in production:
 
 ```bash
-npm run dev
+yarn start
 ```
 
-You will know server is running by checking the output of the command `npm run dev`
+Testing:
 
 ```bash
-Connected to mongodb:YOUR_DB_CONNECTION_STRING
-App is running ...
+# run all tests
+yarn test
 
-Press CTRL + C to stop the process.
+# run all tests in watch mode
+yarn test:watch
+
+# run test coverage
+yarn coverage
 ```
 
-**Note:** `YOUR_DB_CONNECTION_STRING` will be your MongoDB connection string.
-
-### Creating new models
-
-If you need to add more models to the project just create a new file in `/models/` and use them in the controllers.
-
-### Creating new routes
-
-If you need to add more routes to the project just create a new file in `/routes/` and add it in `/routes/api.js` it will be loaded dynamically.
-
-### Creating new controllers
-
-If you need to add more controllers to the project just create a new file in `/controllers/` and use them in the routes.
-
-## Tests
-
-### Running Test Cases
+Docker:
 
 ```bash
-npm test
+# run docker container in development mode
+yarn docker:dev
+
+# run docker container in production mode
+yarn docker:prod
+
+# run all tests in a docker container
+yarn docker:test
 ```
 
-You can set custom command for test at `package.json` file inside `scripts` property. You can also change timeout for each assertion with `--timeout` parameter of mocha command.
-
-### Creating new tests
-
-If you need to add more test cases to the project just create a new file in `/test/` and run the command.
-
-## ESLint
-
-### Running Eslint
+Linting:
 
 ```bash
-npm run lint
+# run ESLint
+yarn lint
+
+# fix ESLint errors
+yarn lint:fix
+
+# run prettier
+yarn prettier
+
+# fix prettier errors
+yarn prettier:fix
 ```
 
-You can set custom rules for eslint in `.eslintrc.json` file, Added at project root.
+## Environment Variables
 
-## Bugs or improvements
+The environment variables can be found and modified in the `.env` file. They come with these default values:
 
-Every project needs improvements, Feel free to report any bugs or improvements. Pull requests are always welcome.
+```bash
+# Port number
+PORT=3000
+
+# URL of the Mongo DB
+MONGODB_URL=mongodb://127.0.0.1:27017/node-boilerplate
+
+# JWT
+# JWT secret key
+JWT_SECRET=thisisasamplesecret
+# Number of minutes after which an access token expires
+JWT_ACCESS_EXPIRATION_MINUTES=30
+# Number of days after which a refresh token expires
+JWT_REFRESH_EXPIRATION_DAYS=30
+
+# SMTP configuration options for the email service
+# For testing, you can use a fake SMTP service like Ethereal: https://ethereal.email/create
+SMTP_HOST=email-server
+SMTP_PORT=587
+SMTP_USERNAME=email-server-username
+SMTP_PASSWORD=email-server-password
+EMAIL_FROM=support@yourapp.com
+```
+
+## Project Structure
+
+```
+src\
+ |--config\         # Environment variables and configuration related things
+ |--controllers\    # Route controllers (controller layer)
+ |--docs\           # Swagger files
+ |--middlewares\    # Custom express middlewares
+ |--models\         # Mongoose models (data layer)
+ |--routes\         # Routes
+ |--services\       # Business logic (service layer)
+ |--utils\          # Utility classes and functions
+ |--validations\    # Request data validation schemas
+ |--app.js          # Express app
+ |--index.js        # App entry point
+```
+
+## API Documentation
+
+To view the list of available APIs and their specifications, run the server and go to `http://localhost:3000/v1/docs` in your browser. This documentation page is automatically generated using the [swagger](https://swagger.io/) definitions written as comments in the route files.
+
+### API Endpoints
+
+List of available routes:
+
+**Auth routes**:\
+`POST /v1/auth/register` - register\
+`POST /v1/auth/login` - login\
+`POST /v1/auth/refresh-tokens` - refresh auth tokens\
+`POST /v1/auth/forgot-password` - send reset password email\
+`POST /v1/auth/reset-password` - reset password\
+`POST /v1/auth/send-verification-email` - send verification email\
+`POST /v1/auth/verify-email` - verify email
+
+**User routes**:\
+`POST /v1/users` - create a user\
+`GET /v1/users` - get all users\
+`GET /v1/users/:userId` - get user\
+`PATCH /v1/users/:userId` - update user\
+`DELETE /v1/users/:userId` - delete user
+
+## Error Handling
+
+The app has a centralized error handling mechanism.
+
+Controllers should try to catch the errors and forward them to the error handling middleware (by calling `next(error)`). For convenience, you can also wrap the controller inside the catchAsync utility wrapper, which forwards the error.
+
+```javascript
+const catchAsync = require('../utils/catchAsync');
+
+const controller = catchAsync(async (req, res) => {
+  // this error will be forwarded to the error handling middleware
+  throw new Error('Something wrong happened');
+});
+```
+
+The error handling middleware sends an error response, which has the following format:
+
+```json
+{
+  "code": 404,
+  "message": "Not found"
+}
+```
+
+When running in development mode, the error response also contains the error stack.
+
+The app has a utility ApiError class to which you can attach a response code and a message, and then throw it from anywhere (catchAsync will catch it).
+
+For example, if you are trying to get a user from the DB who is not found, and you want to send a 404 error, the code should look something like:
+
+```javascript
+const httpStatus = require('http-status');
+const ApiError = require('../utils/ApiError');
+const User = require('../models/User');
+
+const getUser = async (userId) => {
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+  }
+};
+```
+
+## Validation
+
+Request data is validated using [Joi](https://joi.dev/). Check the [documentation](https://joi.dev/api/) for more details on how to write Joi validation schemas.
+
+The validation schemas are defined in the `src/validations` directory and are used in the routes by providing them as parameters to the `validate` middleware.
+
+```javascript
+const express = require('express');
+const validate = require('../../middlewares/validate');
+const userValidation = require('../../validations/user.validation');
+const userController = require('../../controllers/user.controller');
+
+const router = express.Router();
+
+router.post('/users', validate(userValidation.createUser), userController.createUser);
+```
+
+## Authentication
+
+To require authentication for certain routes, you can use the `auth` middleware.
+
+```javascript
+const express = require('express');
+const auth = require('../../middlewares/auth');
+const userController = require('../../controllers/user.controller');
+
+const router = express.Router();
+
+router.post('/users', auth(), userController.createUser);
+```
+
+These routes require a valid JWT access token in the Authorization request header using the Bearer schema. If the request does not contain a valid access token, an Unauthorized (401) error is thrown.
+
+**Generating Access Tokens**:
+
+An access token can be generated by making a successful call to the register (`POST /v1/auth/register`) or login (`POST /v1/auth/login`) endpoints. The response of these endpoints also contains refresh tokens (explained below).
+
+An access token is valid for 30 minutes. You can modify this expiration time by changing the `JWT_ACCESS_EXPIRATION_MINUTES` environment variable in the .env file.
+
+**Refreshing Access Tokens**:
+
+After the access token expires, a new access token can be generated, by making a call to the refresh token endpoint (`POST /v1/auth/refresh-tokens`) and sending along a valid refresh token in the request body. This call returns a new access token and a new refresh token.
+
+A refresh token is valid for 30 days. You can modify this expiration time by changing the `JWT_REFRESH_EXPIRATION_DAYS` environment variable in the .env file.
+
+## Authorization
+
+The `auth` middleware can also be used to require certain rights/permissions to access a route.
+
+```javascript
+const express = require('express');
+const auth = require('../../middlewares/auth');
+const userController = require('../../controllers/user.controller');
+
+const router = express.Router();
+
+router.post('/users', auth('manageUsers'), userController.createUser);
+```
+
+In the example above, an authenticated user can access this route only if that user has the `manageUsers` permission.
+
+The permissions are role-based. You can view the permissions/rights of each role in the `src/config/roles.js` file.
+
+If the user making the request does not have the required permissions to access this route, a Forbidden (403) error is thrown.
+
+## Logging
+
+Import the logger from `src/config/logger.js`. It is using the [Winston](https://github.com/winstonjs/winston) logging library.
+
+Logging should be done according to the following severity levels (ascending order from most important to least important):
+
+```javascript
+const logger = require('<path to src>/config/logger');
+
+logger.error('message'); // level 0
+logger.warn('message'); // level 1
+logger.info('message'); // level 2
+logger.http('message'); // level 3
+logger.verbose('message'); // level 4
+logger.debug('message'); // level 5
+```
+
+In development mode, log messages of all severity levels will be printed to the console.
+
+In production mode, only `info`, `warn`, and `error` logs will be printed to the console.\
+It is up to the server (or process manager) to actually read them from the console and store them in log files.\
+This app uses pm2 in production mode, which is already configured to store the logs in log files.
+
+Note: API request information (request url, response code, timestamp, etc.) are also automatically logged (using [morgan](https://github.com/expressjs/morgan)).
+
+## Custom Mongoose Plugins
+
+The app also contains 2 custom mongoose plugins that you can attach to any mongoose model schema. You can find the plugins in `src/models/plugins`.
+
+```javascript
+const mongoose = require('mongoose');
+const { toJSON, paginate } = require('./plugins');
+
+const userSchema = mongoose.Schema(
+  {
+    /* schema definition here */
+  },
+  { timestamps: true }
+);
+
+userSchema.plugin(toJSON);
+userSchema.plugin(paginate);
+
+const User = mongoose.model('User', userSchema);
+```
+
+### toJSON
+
+The toJSON plugin applies the following changes in the toJSON transform call:
+
+- removes \_\_v, createdAt, updatedAt, and any schema path that has private: true
+- replaces \_id with id
+
+### paginate
+
+The paginate plugin adds the `paginate` static method to the mongoose schema.
+
+Adding this plugin to the `User` model schema will allow you to do the following:
+
+```javascript
+const queryUsers = async (filter, options) => {
+  const users = await User.paginate(filter, options);
+  return users;
+};
+```
+
+The `filter` param is a regular mongo filter.
+
+The `options` param can have the following (optional) fields:
+
+```javascript
+const options = {
+  sortBy: 'name:desc', // sort order
+  limit: 5, // maximum results per page
+  page: 2, // page number
+};
+```
+
+The plugin also supports sorting by multiple criteria (separated by a comma): `sortBy: name:desc,role:asc`
+
+The `paginate` method returns a Promise, which fulfills with an object having the following properties:
+
+```json
+{
+  "results": [],
+  "page": 2,
+  "limit": 5,
+  "totalPages": 10,
+  "totalResults": 48
+}
+```
+
+## Linting
+
+Linting is done using [ESLint](https://eslint.org/) and [Prettier](https://prettier.io).
+
+In this app, ESLint is configured to follow the [Airbnb JavaScript style guide](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base) with some modifications. It also extends [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) to turn off all rules that are unnecessary or might conflict with Prettier.
+
+To modify the ESLint configuration, update the `.eslintrc.json` file. To modify the Prettier configuration, update the `.prettierrc.json` file.
+
+To prevent a certain file or directory from being linted, add it to `.eslintignore` and `.prettierignore`.
+
+To maintain a consistent coding style across different IDEs, the project contains `.editorconfig`
+
+## Contributing
+
+Contributions are more than welcome! Please check out the [contributing guide](CONTRIBUTING.md).
+
+## Inspirations
+
+- [danielfsousa/express-rest-es2017-boilerplate](https://github.com/danielfsousa/express-rest-es2017-boilerplate)
+- [madhums/node-express-mongoose](https://github.com/madhums/node-express-mongoose)
+- [kunalkapadia/express-mongoose-es6-rest-api](https://github.com/kunalkapadia/express-mongoose-es6-rest-api)
 
 ## License
 
-This project is open-sourced software licensed under the MIT License. See the LICENSE file for more information.
+[MIT](LICENSE)
