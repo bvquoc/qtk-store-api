@@ -5,13 +5,17 @@ const categorySchema = mongoose.Schema(
   {
     name: {
       type: String,
-      unique: true, // This enforces uniqueness on the 'name' field
-      required: true, // This makes sure the field is mandatory
-      trim: true, // This trims whitespace from the beginning and end of the value
+      unique: true,
+      required: true,
+      trim: true,
+    },
+    active: {
+      type: Boolean,
+      default: true,
     },
   },
   {
-    timestamps: true, // This adds 'createdAt' and 'updatedAt' timestamps
+    timestamps: true,
   }
 );
 
