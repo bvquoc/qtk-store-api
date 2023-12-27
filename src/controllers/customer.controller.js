@@ -10,14 +10,14 @@ const createCustomer = catchAsync(async (req, res) => {
 });
 
 const getCustomers = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['name']);
-  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const filter = pick(req.query, ['name', 'email', 'phone']);
+  const options = pick(req.query, ['limit', 'page']);
   const result = await customerService.queryCustomers(filter, options);
   res.send(result);
 });
 
 const getCustomer = catchAsync(async (req, res) => {
-  const customer = await customerService.getCustomerById(req.params.categoryId);
+  const customer = await customerService.getCustomerById(req.params.customerId);
   if (!customer) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Customer not found');
   }
@@ -34,10 +34,22 @@ const deleteCustomer = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
+const activateCustomer = catchAsync(async (req, res) => {
+  await customerService.activateCustomerById(req.params.customerId);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
+const deactivateCustomer = catchAsync(async (req, res) => {
+  await customerService.deactivateCustomerById(req.params.customerId);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
 module.exports = {
   createCustomer,
   getCustomers,
   getCustomer,
   updateCustomer,
   deleteCustomer,
+  activateCustomer,
+  deactivateCustomer,
 };

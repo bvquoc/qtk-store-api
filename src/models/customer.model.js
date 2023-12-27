@@ -1,18 +1,49 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
-const customerSchema = mongoose.Schema(
-  {
-    name: {
+const customerSchema = new mongoose.Schema({
+  active: {
+    type: Boolean,
+    default: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  phone: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+    enum: ['Male', 'Female', 'Other'],
+  },
+  birthDate: {
+    type: Date,
+    required: true,
+  },
+  address: {
+    province: {
       type: String,
       required: true,
-      trim: true,
+    },
+    district: {
+      type: String,
+      required: true,
+    },
+    ward: {
+      type: String,
+      required: true,
     },
   },
-  {
-    timestamps: true,
-  }
-);
+});
 
 customerSchema.plugin(toJSON);
 customerSchema.plugin(paginate);

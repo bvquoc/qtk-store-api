@@ -17,4 +17,12 @@ router
   .patch(auth('updateCustomer'), validate(customerValidation.updateCustomer), customerController.updateCustomer)
   .delete(auth('deleteCustomer'), validate(customerValidation.deleteCustomer), customerController.deleteCustomer);
 
+router
+  .route('/:customerId/activate')
+  .patch(auth('updateCustomer'), validate(customerValidation.activateCustomer), customerController.activateCustomer);
+
+router
+  .route('/:customerId/deactivate')
+  .patch(auth('updateCustomer'), validate(customerValidation.deactivateCustomer), customerController.deactivateCustomer);
+
 module.exports = router;

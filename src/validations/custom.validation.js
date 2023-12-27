@@ -15,7 +15,18 @@ const password = (value, helpers) => {
   return value;
 };
 
+const phoneNumber = (value, helpers) => {
+  if (!value.match(/^[0-9]+$/)) {
+    return helpers.message('phone number must be a number');
+  }
+  if (value.length < 10 || value.length > 11) {
+    return helpers.message('phone number must be 10-11 characters');
+  }
+  return value;
+};
+
 module.exports = {
   objectId,
   password,
+  phoneNumber,
 };

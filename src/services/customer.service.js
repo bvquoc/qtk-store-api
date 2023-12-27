@@ -54,10 +54,32 @@ const deleteCustomerById = async (id) => {
   return customer;
 };
 
+const activateCustomerById = async (id) => {
+  const customer = await getCustomerById(id);
+  if (!customer) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Customer not found');
+  }
+  customer.active = true;
+  await customer.save();
+  return customer;
+};
+
+const deactivateCustomerById = async (id) => {
+  const customer = await getCustomerById(id);
+  if (!customer) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Customer not found');
+  }
+  customer.active = false;
+  await customer.save();
+  return customer;
+};
+
 module.exports = {
   createCustomer,
   queryCustomers,
   getCustomerById,
   updateCustomerById,
   deleteCustomerById,
+  activateCustomerById,
+  deactivateCustomerById,
 };
