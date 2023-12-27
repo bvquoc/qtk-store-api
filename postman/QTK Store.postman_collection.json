@@ -109,7 +109,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjMzM5MmZkOTc5YjAwMmU3ZWYxMTQiLCJpYXQiOjE3MDM2ODgwMjAsImV4cCI6MTcwNjI4MDAyMCwidHlwZSI6InJlZnJlc2gifQ.eLvAMozXKR7vux7qajZJyA4Ly2U39FzTqtplbae_p54\"\n}",
+							"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MTIyMDUsImV4cCI6MTcwNjMwNDIwNSwidHlwZSI6InJlZnJlc2gifQ.mLi-i6QRWkudyTnSHO3eM1KBccXBdp8KJtODXUR_Ol8\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -566,6 +566,237 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Get all customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/customers",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "0123456789",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "nva@gm.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Van Anh Tuan\",\n    \"email\": \"vat@gm.com\",\n    \"gender\": \"Male\",\n    \"phone\": \"0111222333\",\n    \"birthDate\": \"1/1/2003\",\n    \"address\": {\n        \"province\": \"Ho Chi Minh\",\n        \"district\": \"Thu Duc\",\n        \"ward\": \"Linh Trung\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/customers",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/customers/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658c9836099f6a011fedcd36"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer Info",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nguyen Anh\",\n    \"email\": \"na@gm.com\",\n    \"gender\": \"Male\",\n    \"phone\": \"0111222334\",\n    \"birthDate\": \"1/1/2003\",\n    \"address\": {\n        \"province\": \"Ho Chi Minh\",\n        \"district\": \"Thu Duc\",\n        \"ward\": \"Linh Trung\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/customers/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658c9836099f6a011fedcd36"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/customers/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658c9836099f6a011fedcd36"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate Customer",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/customers/:id/activate",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"customers",
+								":id",
+								"activate"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658c9836099f6a011fedcd36"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate Customer",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/customers/:id/deactivate",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"customers",
+								":id",
+								"deactivate"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658c9836099f6a011fedcd36"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MTQyMzEsImV4cCI6MTcwMzcxNjAzMSwidHlwZSI6ImFjY2VzcyJ9.x7mmD-zLtMHbK3U-t1rhMMj5j9yrn_1Po4FNQ2aJ39A",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}
