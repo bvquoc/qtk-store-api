@@ -1,0 +1,445 @@
+{
+	"info": {
+		"_postman_id": "d157e3df-63f5-4c07-94fe-f1125b6c3eed",
+		"name": "QTK Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31024721",
+		"_collection_link": "https://cloudy-station-474245.postman.co/workspace/Coffee-shop-management~b7ede852-ec78-4d24-b445-7885ee6ae2b9/collection/31024721-d157e3df-63f5-4c07-94fe-f1125b6c3eed?action=share&creator=31024721&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register as User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"FakeName\",\n    \"email\": \"fake@example.com\",\n    \"password\": \"password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/auth/register",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"fake@example.com\",\n    \"password\": \"password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/auth/login",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjMzM5MmZkOTc5YjAwMmU3ZWYxMTQiLCJpYXQiOjE3MDM2OTIwNTYsImV4cCI6MTcwNjI4NDA1NiwidHlwZSI6InJlZnJlc2gifQ.HIUYwbuD_MTP4kRQyNgkGiNeR8R7SfbZUHhcnF-RmmM\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/auth/logout",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Tokens",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjMzM5MmZkOTc5YjAwMmU3ZWYxMTQiLCJpYXQiOjE3MDM2ODgwMjAsImV4cCI6MTcwNjI4MDAyMCwidHlwZSI6InJlZnJlc2gifQ.eLvAMozXKR7vux7qajZJyA4Ly2U39FzTqtplbae_p54\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/auth/refresh-tokens",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"auth",
+								"refresh-tokens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"fake@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/auth/forgot-password",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"password\": \"BuiViQuoc1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/auth/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjMzM5MmZkOTc5YjAwMmU3ZWYxMTQiLCJpYXQiOjE3MDM2OTIwMDMsImV4cCI6MTcwMzY5MzgwMywidHlwZSI6ImFjY2VzcyJ9.yAWpxbW5fievz02WYZoc5niL5vg1ZICmfbDLifAdI24",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"auth",
+								"reset-password"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjMzM5MmZkOTc5YjAwMmU3ZWYxMTQiLCJpYXQiOjE3MDM2OTIwMDMsImV4cCI6MTcwMzY5MzgwMywidHlwZSI6ImFjY2VzcyJ9.yAWpxbW5fievz02WYZoc5niL5vg1ZICmfbDLifAdI24"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get all user (for admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNTgzMTk5ODVlMjAwMmUzMjU2YmMiLCJpYXQiOjE3MDM2OTY0MzMsImV4cCI6MTcwMzY5ODIzMywidHlwZSI6ImFjY2VzcyJ9.IgeKFc-N2vqTZ_tZ-caXbmZkf_L7RCJF1y8mjuYWiPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/users/",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a user (for admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNTgzMTk5ODVlMjAwMmUzMjU2YmMiLCJpYXQiOjE3MDM2OTY0MzMsImV4cCI6MTcwMzY5ODIzMywidHlwZSI6ImFjY2VzcyJ9.IgeKFc-N2vqTZ_tZ-caXbmZkf_L7RCJF1y8mjuYWiPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"fake name\",\n    \"email\": \"fake@example.com\",\n    \"password\": \"password1\",\n    \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/users/",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNTA2Mjk5ODVlMjAwMmUzMjU2OTYiLCJpYXQiOjE3MDM2OTQ0NDMsImV4cCI6MTcwMzY5NjI0MywidHlwZSI6ImFjY2VzcyJ9.IwnvmGGhLAmDXNVOq4-5qDVd92x-7WHzWXOPxOBxUJ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/users/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658c50629985e2002e325696"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNTgzMTk5ODVlMjAwMmUzMjU2YmMiLCJpYXQiOjE3MDM2OTY0MzMsImV4cCI6MTcwMzY5ODIzMywidHlwZSI6ImFjY2VzcyJ9.IgeKFc-N2vqTZ_tZ-caXbmZkf_L7RCJF1y8mjuYWiPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"fake dasdaname\",\n    \"password\": \"abc@12213\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/users/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658c58319985e2002e3256bc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNTA2Mjk5ODVlMjAwMmUzMjU2OTYiLCJpYXQiOjE3MDM2OTYzMzQsImV4cCI6MTcwMzY5ODEzNCwidHlwZSI6ImFjY2VzcyJ9._CTX_0ZUYqbEaiHX2KB4NmG2ADasvIlCmUdFIwpqx0E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/users/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658c50629985e2002e325696"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "QTKHOST",
+			"value": "http://103.57.221.113:3000/v1/"
+		},
+		{
+			"key": "qtkAccessToken",
+			"value": "asdasd",
+			"type": "string"
+		},
+		{
+			"key": "qtkRefreshToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
