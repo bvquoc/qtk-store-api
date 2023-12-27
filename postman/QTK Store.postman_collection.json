@@ -212,7 +212,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNTgzMTk5ODVlMjAwMmUzMjU2YmMiLCJpYXQiOjE3MDM2OTY0MzMsImV4cCI6MTcwMzY5ODIzMywidHlwZSI6ImFjY2VzcyJ9.IgeKFc-N2vqTZ_tZ-caXbmZkf_L7RCJF1y8mjuYWiPg",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNWM2NjE1MmIzYTAwM2E1YTIxOTEiLCJpYXQiOjE3MDM2OTc1MTAsImV4cCI6MTcwMzY5OTMxMCwidHlwZSI6ImFjY2VzcyJ9.6UO4EL_PHKXgowrj3F5HCl0LhHRMQBw9tUg59fXMjTg",
 									"type": "string"
 								}
 							]
@@ -220,13 +220,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{QTKHOST}}/users/",
+							"raw": "{{QTKHOST}}/users?limit=10",
 							"host": [
 								"{{QTKHOST}}"
 							],
 							"path": [
-								"users",
-								""
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
 							]
 						}
 					},
@@ -277,7 +282,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNTA2Mjk5ODVlMjAwMmUzMjU2OTYiLCJpYXQiOjE3MDM2OTQ0NDMsImV4cCI6MTcwMzY5NjI0MywidHlwZSI6ImFjY2VzcyJ9.IwnvmGGhLAmDXNVOq4-5qDVd92x-7WHzWXOPxOBxUJ8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNWM2NjE1MmIzYTAwM2E1YTIxOTEiLCJpYXQiOjE3MDM2OTc1MTAsImV4cCI6MTcwMzY5OTMxMCwidHlwZSI6ImFjY2VzcyJ9.6UO4EL_PHKXgowrj3F5HCl0LhHRMQBw9tUg59fXMjTg",
 									"type": "string"
 								}
 							]
@@ -296,7 +301,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "658c50629985e2002e325696"
+									"value": "658c5c66152b3a003a5a2191"
 								}
 							]
 						}
@@ -404,6 +409,165 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get all category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MDE4NTQsImV4cCI6MTcwMzcwMzY1NCwidHlwZSI6ImFjY2VzcyJ9.Ttb9kBy6peqpwqUrsaneoRYSefdpgrF5F93eeg3S148",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/categories?limit=10&page=1&sortBy=name",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sortBy",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MDE4NTQsImV4cCI6MTcwMzcwMzY1NCwidHlwZSI6ImFjY2VzcyJ9.Ttb9kBy6peqpwqUrsaneoRYSefdpgrF5F93eeg3S148",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"A\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/categories",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MDE4NTQsImV4cCI6MTcwMzcwMzY1NCwidHlwZSI6ImFjY2VzcyJ9.Ttb9kBy6peqpwqUrsaneoRYSefdpgrF5F93eeg3S148",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"ABC\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/categories/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658c7007ca499e003ac7bbdb"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MDE4NTQsImV4cCI6MTcwMzcwMzY1NCwidHlwZSI6ImFjY2VzcyJ9.Ttb9kBy6peqpwqUrsaneoRYSefdpgrF5F93eeg3S148",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/categories/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658c7007ca499e003ac7bbdb"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
@@ -430,16 +594,6 @@
 		{
 			"key": "QTKHOST",
 			"value": "http://103.57.221.113:3000/v1/"
-		},
-		{
-			"key": "qtkAccessToken",
-			"value": "asdasd",
-			"type": "string"
-		},
-		{
-			"key": "qtkRefreshToken",
-			"value": "",
-			"type": "string"
 		}
 	]
 }
