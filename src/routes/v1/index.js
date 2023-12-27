@@ -3,15 +3,12 @@ const docsRoute = require('./docs.route');
 const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const categoryRoute = require('./category.route');
+const customerRoute = require('./customer.route');
 const config = require('../../config/config');
 
 const router = express.Router();
 
 const defaultRoutes = [
-  {
-    path: '/docs',
-    route: docsRoute,
-  },
   {
     path: '/auth',
     route: authRoute,
@@ -24,9 +21,18 @@ const defaultRoutes = [
     path: '/categories',
     route: categoryRoute,
   },
+  {
+    path: '/customers',
+    route: customerRoute,
+  },
 ];
 
-const devRoutes = [];
+const devRoutes = [
+  {
+    path: '/docs',
+    route: docsRoute,
+  },
+];
 
 defaultRoutes.forEach((route) => {
   router.use(route.path, route.route);
