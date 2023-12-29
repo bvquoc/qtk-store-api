@@ -21,6 +21,11 @@ const supplierSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
+    taxIdentificationNumber: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     address: {
       province: {
         type: String,
@@ -35,12 +40,6 @@ const supplierSchema = mongoose.Schema(
         required: true,
       },
     },
-    importedProducts: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Product',
-      },
-    ],
   },
   {
     timestamps: true,
