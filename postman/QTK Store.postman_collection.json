@@ -4,7 +4,7 @@
 		"name": "QTK Store",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "31024721",
-		"_collection_link": "https://cloudy-station-474245.postman.co/workspace/Coffee-shop-management~b7ede852-ec78-4d24-b445-7885ee6ae2b9/collection/31024721-d157e3df-63f5-4c07-94fe-f1125b6c3eed?action=share&creator=31024721&source=collection_link"
+		"_collection_link": "https://cloudy-station-474245.postman.co/workspace/Coffee-shop-management~b7ede852-ec78-4d24-b445-7885ee6ae2b9/collection/31024721-d157e3df-63f5-4c07-94fe-f1125b6c3eed?action=share&source=collection_link&creator=31024721"
 	},
 	"item": [
 		{
@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"FakeName\",\n    \"email\": \"fake@example.com\",\n    \"password\": \"password1\"\n}",
+							"raw": "{\n    \"name\": \"Admin\",\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"password1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -55,7 +55,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"fake@example.com\",\n    \"password\": \"password1\"\n}",
+							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"password1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -82,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjMzM5MmZkOTc5YjAwMmU3ZWYxMTQiLCJpYXQiOjE3MDM2OTIwNTYsImV4cCI6MTcwNjI4NDA1NiwidHlwZSI6InJlZnJlc2gifQ.HIUYwbuD_MTP4kRQyNgkGiNeR8R7SfbZUHhcnF-RmmM\"\n}",
+							"raw": "{\n  \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjOWZjMDk5ODVlMjAwMmUzMjU2ZDUiLCJpYXQiOjE3MDM3MTUyNzMsImV4cCI6MTcwNjMwNzI3MywidHlwZSI6InJlZnJlc2gifQ.f9T4tOVAn28-N0JcJVAw7NOv8geR73X1GJtbby_gDD4\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -207,16 +207,6 @@
 				{
 					"name": "Get all user (for admin)",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNWM2NjE1MmIzYTAwM2E1YTIxOTEiLCJpYXQiOjE3MDM2OTc1MTAsImV4cCI6MTcwMzY5OTMxMCwidHlwZSI6ImFjY2VzcyJ9.6UO4EL_PHKXgowrj3F5HCl0LhHRMQBw9tUg59fXMjTg",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -240,16 +230,6 @@
 				{
 					"name": "Create a user (for admin)",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNTgzMTk5ODVlMjAwMmUzMjU2YmMiLCJpYXQiOjE3MDM2OTY0MzMsImV4cCI6MTcwMzY5ODIzMywidHlwZSI6ImFjY2VzcyJ9.IgeKFc-N2vqTZ_tZ-caXbmZkf_L7RCJF1y8mjuYWiPg",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -277,16 +257,6 @@
 				{
 					"name": "Get User by id",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNWM2NjE1MmIzYTAwM2E1YTIxOTEiLCJpYXQiOjE3MDM2OTc1MTAsImV4cCI6MTcwMzY5OTMxMCwidHlwZSI6ImFjY2VzcyJ9.6UO4EL_PHKXgowrj3F5HCl0LhHRMQBw9tUg59fXMjTg",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -301,7 +271,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "658c5c66152b3a003a5a2191"
+									"value": "658cc52cdb2f8d002e7390c8"
 								}
 							]
 						}
@@ -311,16 +281,6 @@
 				{
 					"name": "Update User Info",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNTgzMTk5ODVlMjAwMmUzMjU2YmMiLCJpYXQiOjE3MDM2OTY0MzMsImV4cCI6MTcwMzY5ODIzMywidHlwZSI6ImFjY2VzcyJ9.IgeKFc-N2vqTZ_tZ-caXbmZkf_L7RCJF1y8mjuYWiPg",
-									"type": "string"
-								}
-							]
-						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
@@ -344,7 +304,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "658c58319985e2002e3256bc"
+									"value": "658cc52cdb2f8d002e7390c8"
 								}
 							]
 						}
@@ -354,16 +314,6 @@
 				{
 					"name": "Delete user",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNTA2Mjk5ODVlMjAwMmUzMjU2OTYiLCJpYXQiOjE3MDM2OTYzMzQsImV4cCI6MTcwMzY5ODEzNCwidHlwZSI6ImFjY2VzcyJ9._CTX_0ZUYqbEaiHX2KB4NmG2ADasvIlCmUdFIwpqx0E",
-									"type": "string"
-								}
-							]
-						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -378,7 +328,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "658c50629985e2002e325696"
+									"value": "658cc52cdb2f8d002e7390c8"
 								}
 							]
 						}
@@ -387,7 +337,14 @@
 				}
 			],
 			"auth": {
-				"type": "bearer"
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjYzRkMmRiMmY4ZDAwMmU3MzkwYmMiLCJpYXQiOjE3MDM3MjQyNDgsImV4cCI6MTcwMzcyNjA0OCwidHlwZSI6ImFjY2VzcyJ9.i6hN1kPxaKCHWEqOFlQuCLnQ0euNirqWFechLu--oFM",
+						"type": "string"
+					}
+				]
 			},
 			"event": [
 				{
@@ -416,16 +373,6 @@
 				{
 					"name": "Get all category",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MDE4NTQsImV4cCI6MTcwMzcwMzY1NCwidHlwZSI6ImFjY2VzcyJ9.Ttb9kBy6peqpwqUrsaneoRYSefdpgrF5F93eeg3S148",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -457,21 +404,11 @@
 				{
 					"name": "Create Category",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MDE4NTQsImV4cCI6MTcwMzcwMzY1NCwidHlwZSI6ImFjY2VzcyJ9.Ttb9kBy6peqpwqUrsaneoRYSefdpgrF5F93eeg3S148",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"A\"\n}",
+							"raw": "{\n    \"name\": \"Fast food\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -493,21 +430,11 @@
 				{
 					"name": "Update Category",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MDE4NTQsImV4cCI6MTcwMzcwMzY1NCwidHlwZSI6ImFjY2VzcyJ9.Ttb9kBy6peqpwqUrsaneoRYSefdpgrF5F93eeg3S148",
-									"type": "string"
-								}
-							]
-						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"ABC\"\n}",
+							"raw": "{\n    \"name\": \"Fastfood\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -526,7 +453,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "658c7007ca499e003ac7bbdb"
+									"value": "658cc5a2db2f8d002e7390dd"
 								}
 							]
 						}
@@ -534,18 +461,8 @@
 					"response": []
 				},
 				{
-					"name": "Update Category Copy",
+					"name": "Delete category",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MDE4NTQsImV4cCI6MTcwMzcwMzY1NCwidHlwZSI6ImFjY2VzcyJ9.Ttb9kBy6peqpwqUrsaneoRYSefdpgrF5F93eeg3S148",
-									"type": "string"
-								}
-							]
-						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -560,7 +477,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "658c7007ca499e003ac7bbdb"
+									"value": "658cc5ccdb2f8d002e7390e6"
 								}
 							]
 						}
@@ -654,7 +571,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "658c9836099f6a011fedcd36"
+									"value": "658cc5f1db2f8d002e7390ef"
 								}
 							]
 						}
@@ -769,16 +686,6 @@
 					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjNjVhMDBkNDIzNTAzM2ViYjczNDciLCJpYXQiOjE3MDM3MTQyMzEsImV4cCI6MTcwMzcxNjAzMSwidHlwZSI6ImFjY2VzcyJ9.x7mmD-zLtMHbK3U-t1rhMMj5j9yrn_1Po4FNQ2aJ39A",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -799,8 +706,149 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Supplier",
+			"item": [
+				{
+					"name": "Get all supplier",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/suppliers?limit=10&page=1&sortBy=name&name=Vinamilk&phone=01122334455&email=vinamilk@supplier.com",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"suppliers"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sortBy",
+									"value": "name"
+								},
+								{
+									"key": "name",
+									"value": "Vinamilk"
+								},
+								{
+									"key": "phone",
+									"value": "01122334455"
+								},
+								{
+									"key": "email",
+									"value": "vinamilk@supplier.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create supplier",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"ThienLong\",\n    \"email\": \"thienlong@supplier.com\",\n    \"phone\": \"01122334466\",\n    \"taxIdentificationNumber\": \"TAXNUMTHIENLONG\",\n    \"address\": {\n        \"province\": \"Thu Duc\",\n        \"district\": \"Thu Thiem\",\n        \"ward\": \"Phuong 8\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/suppliers",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"suppliers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update supplier",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"name\": \"newName\",\n    // \"phone\":\"newPhone\",\n    // \"address\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/suppliers/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"suppliers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658eecb8d0ab7305f8898b2b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete supplier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/suppliers/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"suppliers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "658eecb8d0ab7305f8898b2b"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlYWY4ODYyMzAwMDAwM2E5NDI2MmQiLCJpYXQiOjE3MDM4NjYwNDQsImV4cCI6MTcwMzg2Nzg0NCwidHlwZSI6ImFjY2VzcyJ9.Wz0ALw6ep3yM32ei8EKk3FrZws53U1g1-UxA9q4NE3M",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
