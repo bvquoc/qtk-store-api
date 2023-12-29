@@ -14,6 +14,7 @@ const createUser = async (userBody) => {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
   if (userBody.email === config.superAdminEmail) {
+    // eslint-disable-next-line no-param-reassign
     userBody.role = 'admin';
   }
   return User.create(userBody);
