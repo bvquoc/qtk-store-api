@@ -27,19 +27,29 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 'VND',
     },
-    supplier: {
+    supplierId: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Supplier',
     },
-    category: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Category',
-    },
+    categoryIds: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Category',
+      },
+    ],
     images: [
       {
         type: String,
       },
     ],
+    quantity: {
+      type: Object,
+      default: {
+        imported: 0,
+        inStock: 0,
+        sold: 0,
+      },
+    },
   },
   {
     timestamps: true,

@@ -40,6 +40,12 @@ const supplierSchema = mongoose.Schema(
         required: true,
       },
     },
+    productIds: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Product',
+      },
+    ],
   },
   {
     timestamps: true,

@@ -13,6 +13,12 @@ const categorySchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    productIds: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Product',
+      },
+    ],
   },
   {
     timestamps: true,
@@ -23,9 +29,6 @@ const categorySchema = mongoose.Schema(
 categorySchema.plugin(toJSON);
 categorySchema.plugin(paginate);
 
-/**
- * @typedef Category
- */
 const Category = mongoose.model('Category', categorySchema);
 
 module.exports = Category;
