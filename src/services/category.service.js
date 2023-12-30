@@ -54,10 +54,25 @@ const deleteCategoryById = async (categoryId) => {
   return category;
 };
 
+const addProductToCategory = async (categoryId, productId) => {
+  const category = await getCategoryById(categoryId);
+  category.productIds.push(productId);
+  await category.save();
+};
+
+const removeProductFromCategory = async (categoryId, productId) => {
+  const category = await getCategoryById(categoryId);
+  category.productIds.pull(productId);
+  await category.save();
+};
+
 module.exports = {
   createCategory,
   queryCategories,
   getCategoryById,
   updateCategoryById,
   deleteCategoryById,
+
+  addProductToCategory,
+  removeProductFromCategory,
 };

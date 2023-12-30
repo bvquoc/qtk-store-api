@@ -14,9 +14,18 @@ const roleAdmin_Customers = ['getCustomers', 'createCustomer', 'updateCustomer',
 const roleUser_Suppliers = ['getSuppliers'];
 const roleAdmin_Suppliers = ['getSuppliers', 'createSupplier', 'updateSupplier', 'deleteSupplier'];
 
+const roleUser_Products = ['getProducts'];
+const roleAdmin_Products = ['getProducts', 'createProduct', 'updateProduct', 'deleteProduct'];
+
 const allRoles = {
-  user: [...roleUser_Users, ...roleUser_Categories, ...roleUser_Customers, ...roleUser_Suppliers],
-  admin: [...roleAdmin_Users, ...roleAdmin_Categories, ...roleAdmin_Customers, ...roleAdmin_Suppliers],
+  user: [...roleUser_Users, ...roleUser_Categories, ...roleUser_Customers, ...roleUser_Suppliers, ...roleUser_Products],
+  admin: [
+    ...roleAdmin_Users,
+    ...roleAdmin_Categories,
+    ...roleAdmin_Customers,
+    ...roleAdmin_Suppliers,
+    ...roleAdmin_Products,
+  ],
 };
 
 const roles = Object.keys(allRoles);

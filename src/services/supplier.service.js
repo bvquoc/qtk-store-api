@@ -34,10 +34,25 @@ const deleteSupplierById = async (id) => {
   return supplier;
 };
 
+const addProductToSupplier = async (supplierId, productId) => {
+  const supplier = await getSupplierById(supplierId);
+  supplier.productIds.push(productId);
+  await supplier.save();
+};
+
+const removeProductFromSupplier = async (supplierId, productId) => {
+  const supplier = await getSupplierById(supplierId);
+  supplier.productIds.pull(productId);
+  await supplier.save();
+};
+
 module.exports = {
   createSupplier,
   querySuppliers,
   getSupplierById,
   updateSupplierById,
   deleteSupplierById,
+
+  addProductToSupplier,
+  removeProductFromSupplier,
 };
