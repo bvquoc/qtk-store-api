@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "d157e3df-63f5-4c07-94fe-f1125b6c3eed",
+		"_postman_id": "80c25850-f62f-4665-9cca-cc982329e6a0",
 		"name": "QTK Store",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31024721",
-		"_collection_link": "https://cloudy-station-474245.postman.co/workspace/Coffee-shop-management~b7ede852-ec78-4d24-b445-7885ee6ae2b9/collection/31024721-d157e3df-63f5-4c07-94fe-f1125b6c3eed?action=share&source=collection_link&creator=31024721"
+		"_exporter_id": "31024721"
 	},
 	"item": [
 		{
@@ -17,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Admin\",\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"password1\"\n}",
+							"raw": "{\n    \"name\": \"SuperAdmin\",\n    \"email\": \"admin@qtk.store\",\n    \"password\": \"password1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -716,7 +715,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{QTKHOST}}/suppliers?limit=10&page=1&sortBy=name&name=Vinamilk&phone=01122334455&email=vinamilk@supplier.com",
+							"raw": "{{QTKHOST}}/suppliers?limit=10&page=1&sortBy=name",
 							"host": [
 								"{{QTKHOST}}"
 							],
@@ -738,15 +737,18 @@
 								},
 								{
 									"key": "name",
-									"value": "Vinamilk"
+									"value": "Vinamilk",
+									"disabled": true
 								},
 								{
 									"key": "phone",
-									"value": "01122334455"
+									"value": "01122334455",
+									"disabled": true
 								},
 								{
 									"key": "email",
-									"value": "vinamilk@supplier.com"
+									"value": "vinamilk@supplier.com",
+									"disabled": true
 								}
 							]
 						}
@@ -837,6 +839,95 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/products?name=abc",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "name",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "abc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"0\",\n    \"description\": \"Sữa cho mọi nhà\",\n    \"price\": \"200000\",\n    \"supplierId\": \"65906f8e7563d90408a91b93\",\n    \"categoryIds\": [\"658ee7765af1ac05042b65e2\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/products",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		}
 	],
 	"auth": {
@@ -844,7 +935,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlYWY4ODYyMzAwMDAwM2E5NDI2MmQiLCJpYXQiOjE3MDM4NjYwNDQsImV4cCI6MTcwMzg2Nzg0NCwidHlwZSI6ImFjY2VzcyJ9.Wz0ALw6ep3yM32ei8EKk3FrZws53U1g1-UxA9q4NE3M",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlYWY4ODYyMzAwMDAwM2E5NDI2MmQiLCJpYXQiOjE3MDM5NTcwMjgsImV4cCI6MTcwNDAxNzAyOCwidHlwZSI6ImFjY2VzcyJ9.bbmwZX4Q7oJA1jzH_ryTXwYYcZhEcXkmsSdQ0NmRqdE",
 				"type": "string"
 			}
 		]
