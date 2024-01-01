@@ -5,6 +5,22 @@ const objectId = (value, helpers) => {
   return value;
 };
 
+const objectIds = (value, helpers) => {
+  const ids = [...new Set(value.split(','))];
+
+  if (ids.length === 0) {
+    return helpers.message('"{{#label}}" most not be empty');
+  }
+
+  for (let i = 0; i < ids.length; i += 1) {
+    if (!ids[i].match(/^[0-9a-fA-F]{24}$/)) {
+      return helpers.message('"{{#label}}" must be a valid mongo id');
+    }
+  }
+
+  return ids;
+};
+
 const password = (value, helpers) => {
   if (value.length < 8) {
     return helpers.message('password must be at least 8 characters');
@@ -27,6 +43,7 @@ const phoneNumber = (value, helpers) => {
 
 module.exports = {
   objectId,
+  objectIds,
   password,
   phoneNumber,
 };
