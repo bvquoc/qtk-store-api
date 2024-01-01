@@ -27,15 +27,10 @@ const updateProductById = async (productId, updateBody) => {
 
 const deleteProductById = async (productId) => {
   const product = await getProductById(productId);
-
   if (!product) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Product not found');
   }
-
-
   await product.remove();
-
-
   return product;
 };
 

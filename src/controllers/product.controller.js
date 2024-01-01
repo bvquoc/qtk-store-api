@@ -37,6 +37,26 @@ const getProducts = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['name']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await productService.queryProducts(filter, options);
+
+  const products = result.results;
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+    // eslint-disable-next-line no-await-in-loop
+    const supplier = await supplierService.getSimpleSupplierById(product.supplierId);
+    product.supplier = supplier;
+    product.supplierId = undefined;
+
+    const categories = [];
+    for (let j = 0; j < product.categoryIds.length; j++) {
+      const id = product.categoryIds[j];
+      // eslint-disable-next-line no-await-in-loop
+      const category = await categoryService.getSimpleCategoryById(id);
+      categories.push(category);
+    }
+    product.categories = categories;
+    product.categoryIds = undefined;
+  }
+
   res.send(result);
 });
 

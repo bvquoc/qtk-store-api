@@ -2,37 +2,21 @@ const httpStatus = require('http-status');
 const { Category } = require('../models');
 const ApiError = require('../utils/ApiError');
 
-/**
- * Create a user
- * @param {Object} categoryBody
- * @returns {Promise<Category>}
- */
 const createCategory = async (categoryBody) => {
   return Category.create(categoryBody);
 };
 
-/**
- * Query for categories
- * @param {Object} filter - Mongo filter
- * @param {Object} options - Query options
- * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
- * @param {number} [options.limit] - Maximum number of results per page (default = 10)
- * @param {number} [options.page] - Current page (default = 1)
- * @returns {Promise<void>}
- */
 const queryCategories = async (filter, options) => {
   const categories = await Category.paginate(filter, options);
   return categories;
 };
 
-/**
- * Get category by id
- * @param categoryId
- * @param updateBody
- * @returns {Promise<Category>}
- */
 const getCategoryById = async (id) => {
   return Category.findById(id);
+};
+
+const getSimpleCategoryById = async (id) => {
+  return Category.findById(id).select('_id name');
 };
 
 const updateCategoryById = async (categoryId, updateBody) => {
@@ -70,6 +54,7 @@ module.exports = {
   createCategory,
   queryCategories,
   getCategoryById,
+  getSimpleCategoryById,
   updateCategoryById,
   deleteCategoryById,
 
