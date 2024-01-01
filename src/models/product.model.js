@@ -31,10 +31,20 @@ const productSchema = mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Supplier',
     },
+    supplier: {
+      type: Object,
+      default: undefined,
+    },
     categoryIds: [
       {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Category',
+      },
+    ],
+    categories: [
+      {
+        type: Object,
+        default: undefined,
       },
     ],
     images: [

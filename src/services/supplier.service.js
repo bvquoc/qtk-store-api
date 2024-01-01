@@ -15,6 +15,10 @@ const getSupplierById = async (id) => {
   return Supplier.findById(id);
 };
 
+const getSimpleSupplierById = async (id) => {
+  return Supplier.findById(id).select('_id name');
+};
+
 const updateSupplierById = async (id, updateBody) => {
   const supplier = await getSupplierById(id);
   if (!supplier) {
@@ -50,6 +54,7 @@ module.exports = {
   createSupplier,
   querySuppliers,
   getSupplierById,
+  getSimpleSupplierById,
   updateSupplierById,
   deleteSupplierById,
 
