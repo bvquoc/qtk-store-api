@@ -367,6 +367,38 @@
 			]
 		},
 		{
+			"name": "Upload",
+			"item": [
+				{
+					"name": "Upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/quocbv/Downloads/1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/upload",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Category",
 			"item": [
 				{
@@ -849,7 +881,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{QTKHOST}}/products?name=abc",
+							"raw": "{{QTKHOST}}/products",
 							"host": [
 								"{{QTKHOST}}"
 							],
@@ -859,7 +891,7 @@
 							"query": [
 								{
 									"key": "sortBy",
-									"value": "name",
+									"value": "price",
 									"disabled": true
 								},
 								{
@@ -874,7 +906,13 @@
 								},
 								{
 									"key": "name",
-									"value": "abc"
+									"value": "abc",
+									"disabled": true
+								},
+								{
+									"key": "categoryIds",
+									"value": "658ee7765af1ac05042b65e2,658ee7765af1ac05042b65e5",
+									"disabled": true
 								}
 							]
 						}
@@ -935,7 +973,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlYWY4ODYyMzAwMDAwM2E5NDI2MmQiLCJpYXQiOjE3MDQxMDAxMzAsImV4cCI6MTcwNDE2MDEzMCwidHlwZSI6ImFjY2VzcyJ9.ij45NZ18UYtnQ9h_io3nh2NkJPv14lTxx_u2FSCq-nQ",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlYWY4ODYyMzAwMDAwM2E5NDI2MmQiLCJpYXQiOjE3MDQ0NjA5MjcsImV4cCI6MTcwNDUyMDkyNywidHlwZSI6ImFjY2VzcyJ9.iD6Dq_vdLyI2zUdqtueJb_-WfpsD32c1BrsDIN4fKpg",
 				"type": "string"
 			}
 		]
