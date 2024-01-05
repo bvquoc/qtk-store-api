@@ -4,6 +4,10 @@ const roleUser_Users = [];
 const roleStaff_Users = ['getUsers'];
 const roleAdmin_Users = ['getUsers', 'manageUsers'];
 
+const roleUser_Uploads = ['upload'];
+const roleStaff_Uploads = ['upload'];
+const roleAdmin_Uploads = ['upload'];
+
 const roleUser_Categories = ['getCategories'];
 const roleStaff_Categories = ['getCategories', 'manageCategories'];
 const roleAdmin_Categories = ['getCategories', 'manageCategories'];
@@ -21,9 +25,17 @@ const roleStaff_Products = ['getProducts'];
 const roleAdmin_Products = ['getProducts', 'createProduct', 'updateProduct', 'deleteProduct'];
 
 const allRoles = {
-  user: [...roleUser_Users, ...roleUser_Categories, ...roleUser_Customers, ...roleUser_Suppliers, ...roleUser_Products],
+  user: [
+    ...roleUser_Users,
+    ...roleUser_Uploads,
+    ...roleUser_Categories,
+    ...roleUser_Customers,
+    ...roleUser_Suppliers,
+    ...roleUser_Products,
+  ],
   staff: [
     ...roleStaff_Users,
+    ...roleStaff_Uploads,
     ...roleStaff_Categories,
     ...roleStaff_Customers,
     ...roleStaff_Suppliers,
@@ -31,6 +43,7 @@ const allRoles = {
   ],
   admin: [
     ...roleAdmin_Users,
+    ...roleAdmin_Uploads,
     ...roleAdmin_Categories,
     ...roleAdmin_Customers,
     ...roleAdmin_Suppliers,
