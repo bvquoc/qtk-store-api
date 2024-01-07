@@ -8,12 +8,18 @@ const router = express.Router();
 
 router.route('/').get(auth('getProducts'), validate(inventoryValidate.getProducts), (req, res) => res.send('get products'));
 
+// import products
 router
   .route('/import-products')
   .post(
     auth('getProducts', 'importProducts'),
     validate(inventoryValidate.importProducts),
     inventoryController.importProducts
+  )
+  .get(
+    auth('getProducts', 'importProducts'),
+    validate(inventoryValidate.getImportProductsNotes),
+    inventoryController.getImportProductsNotes
   );
 
 router

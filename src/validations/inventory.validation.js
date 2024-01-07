@@ -27,6 +27,15 @@ const updateImportProductsStatus = {
   }),
 };
 
+const getImportProductsNotes = {
+  query: Joi.object().keys({
+    status: Joi.string(),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
+  }),
+};
+
 const getInventoryItems = {
   query: Joi.object().keys({
     name: Joi.string(),
@@ -38,6 +47,7 @@ const getInventoryItems = {
 
 module.exports = {
   importProducts,
+  getImportProductsNotes,
   updateImportProductsStatus,
   getInventoryItems,
 };

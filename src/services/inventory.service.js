@@ -34,7 +34,13 @@ const updateImportStatus = async (id, status) => {
   return inventoryImportNote;
 };
 
+const queryImportNotes = async (filter, options) => {
+  const inventoryImportNotes = await InventoryImportNote.paginate(filter, options);
+  return inventoryImportNotes;
+};
+
 module.exports = {
   importProducts,
   updateImportStatus,
+  queryImportNotes,
 };

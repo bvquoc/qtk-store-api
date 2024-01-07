@@ -27,13 +27,20 @@ const importProducts = catchAsync(async (req, res) => {
   const importProductNote = await inventoryService.importProducts(req.body);
   res.status(httpStatus.CREATED).send(importProductNote);
 });
-
 const updateImportProductsStatus = catchAsync(async (req, res) => {
   const importProductNote = await inventoryService.updateImportStatus(req.params.importId, req.body.status);
   res.send(importProductNote);
 });
 
+const getImportProductsNotes = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['status']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const result = await inventoryService.queryImportNotes(filter, options);
+  res.send(result);
+});
+
 module.exports = {
   importProducts,
   updateImportProductsStatus,
+  getImportProductsNotes,
 };
