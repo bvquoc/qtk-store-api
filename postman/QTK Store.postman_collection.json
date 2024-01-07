@@ -54,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"password1\"\n}",
+							"raw": "{\n    \"email\": \"admin@qtk.store\",\n    \"password\": \"password1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -881,7 +881,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{QTKHOST}}/products",
+							"raw": "{{QTKHOST}}/products?limit=50",
 							"host": [
 								"{{QTKHOST}}"
 							],
@@ -896,8 +896,7 @@
 								},
 								{
 									"key": "limit",
-									"value": "20",
-									"disabled": true
+									"value": "50"
 								},
 								{
 									"key": "page",
@@ -966,6 +965,73 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Import products",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"products\": [\n        {\n            \"id\": \"659058a315016003d077b8b0\",\n            \"quantity\": 10,\n            \"importPrice\": 10000,\n            \"expiryDate\": \"2024-01-31\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/inventories/import-products",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"inventories",
+								"import-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set import note status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"cancelled\" // 'completed', 'cancelled'\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/inventories/import-products/:id/status",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"inventories",
+								"import-products",
+								":id",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "659b1c27117b960b84c62eba"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -973,7 +1039,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlYWY4ODYyMzAwMDAwM2E5NDI2MmQiLCJpYXQiOjE3MDQ0NjA5MjcsImV4cCI6MTcwNDUyMDkyNywidHlwZSI6ImFjY2VzcyJ9.iD6Dq_vdLyI2zUdqtueJb_-WfpsD32c1BrsDIN4fKpg",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlZjZhZGI4NTEzODA3ZWEzMjQzMDgiLCJpYXQiOjE3MDQ2NTcwNTEsImV4cCI6MTcwNDcxNzA1MSwidHlwZSI6ImFjY2VzcyJ9.HZrtxsD6duLacaNfKDkXB8mGT4hrjzHsAm8jbJJtQs8",
 				"type": "string"
 			}
 		]
