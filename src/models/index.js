@@ -6,3 +6,4 @@ module.exports.Supplier = require('./supplier.model');
 module.exports.Product = require('./product.model');
 module.exports.Order = require('./order.model');
 module.exports.InventoryImportNote = require('./inventory-import-note.model');
+module.exports.InventoryItem = require('./inventory-item.model');

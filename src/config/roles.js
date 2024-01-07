@@ -25,8 +25,8 @@ const roleStaff_Products = ['getProducts'];
 const roleAdmin_Products = ['getProducts', 'createProduct', 'updateProduct', 'deleteProduct'];
 
 const roleUser_Inventories = [];
-const roleStaff_Inventories = ['importProducts'];
-const roleAdmin_Inventories = ['importProducts'];
+const roleStaff_Inventories = ['importProducts', 'getInventoryItems'];
+const roleAdmin_Inventories = ['importProducts', 'getInventoryItems'];
 
 const allRoles = {
   user: [

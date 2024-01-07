@@ -6,7 +6,9 @@ const inventoryController = require('../../controllers/inventory.controller');
 
 const router = express.Router();
 
-router.route('/').get(auth('getProducts'), validate(inventoryValidate.getProducts), (req, res) => res.send('get products'));
+router
+  .route('/')
+  .get(auth('getInventoryItems'), validate(inventoryValidate.getInventoryItems), inventoryController.getInventoryItems);
 
 // import products
 router
