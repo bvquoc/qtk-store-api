@@ -24,6 +24,10 @@ const roleUser_Products = ['getProducts'];
 const roleStaff_Products = ['getProducts'];
 const roleAdmin_Products = ['getProducts', 'createProduct', 'updateProduct', 'deleteProduct'];
 
+const roleUser_Inventories = [];
+const roleStaff_Inventories = ['importProducts'];
+const roleAdmin_Inventories = ['importProducts'];
+
 const allRoles = {
   user: [
     ...roleUser_Users,
@@ -32,6 +36,7 @@ const allRoles = {
     ...roleUser_Customers,
     ...roleUser_Suppliers,
     ...roleUser_Products,
+    ...roleUser_Inventories,
   ],
   staff: [
     ...roleStaff_Users,
@@ -40,6 +45,7 @@ const allRoles = {
     ...roleStaff_Customers,
     ...roleStaff_Suppliers,
     ...roleStaff_Products,
+    ...roleStaff_Inventories,
   ],
   admin: [
     ...roleAdmin_Users,
@@ -48,6 +54,7 @@ const allRoles = {
     ...roleAdmin_Customers,
     ...roleAdmin_Suppliers,
     ...roleAdmin_Products,
+    ...roleAdmin_Inventories,
   ],
 };
 

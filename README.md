@@ -69,8 +69,13 @@
 - [ ] Read
 - [ ] Update
 - [ ] Delete
-- [ ] List
+- [x] List
 - [ ] Activate
 - [ ] Deactivate
 - [ ] Search
 
+### 9. Upload file
+- [x] Upload file
+
+### 10. Inventory Management
+- [x] Import Product
