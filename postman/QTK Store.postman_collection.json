@@ -1030,6 +1030,30 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get import products note",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/inventories/import-products?status=completed",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"inventories",
+								"import-products"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "completed"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
