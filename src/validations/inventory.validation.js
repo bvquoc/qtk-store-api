@@ -3,6 +3,7 @@ const { objectId } = require('./custom.validation');
 
 const importProducts = {
   body: Joi.object().keys({
+    status: Joi.string().default('pending'),
     products: Joi.array()
       .items(
         Joi.object().keys({
@@ -17,6 +18,14 @@ const importProducts = {
       .required(),
   }),
 };
+const updateImportProductsStatus = {
+  params: Joi.object().keys({
+    importId: Joi.string().custom(objectId).required(),
+  }),
+  body: Joi.object().keys({
+    status: Joi.string().valid('completed', 'cancelled').required(),
+  }),
+};
 
 const getInventoryItems = {
   query: Joi.object().keys({
@@ -29,5 +38,6 @@ const getInventoryItems = {
 
 module.exports = {
   importProducts,
+  updateImportProductsStatus,
   getInventoryItems,
 };
