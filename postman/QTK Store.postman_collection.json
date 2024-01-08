@@ -335,16 +335,6 @@
 					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThjYzRkMmRiMmY4ZDAwMmU3MzkwYmMiLCJpYXQiOjE3MDM3MjQyNDgsImV4cCI6MTcwMzcyNjA0OCwidHlwZSI6ImFjY2VzcyJ9.i6hN1kPxaKCHWEqOFlQuCLnQ0euNirqWFechLu--oFM",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -976,7 +966,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"products\": [\n        {\n            \"id\": \"659058a315016003d077b8b0\",\n            \"quantity\": 10,\n            \"importPrice\": 10000,\n            \"expiryDate\": \"2024-01-31\"\n        }\n    ]\n}",
+							"raw": "{\n    \"products\": [\n        {\n            \"id\": \"65906f9f7563d90408a91b9d\",\n            \"quantity\": 10,\n            \"importPrice\": 10000,\n            \"expiryDate\": \"2024-01-31\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1003,7 +993,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"status\": \"cancelled\" // 'completed', 'cancelled'\n}",
+							"raw": "{\n    \"status\": \"completed\" // 'completed', 'cancelled'\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1024,7 +1014,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "659b1c27117b960b84c62eba"
+									"value": "659b2aba5d99c101ba798664"
 								}
 							]
 						}
@@ -1064,6 +1054,68 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get inventory items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/inventories/",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"inventories",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Create Invoice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": \"658ef4248798d007897a35e4\",\n    \"items\": [\n        {\n            \"productId\" : \"65906f9f7563d90408a91b9d\",\n            \"quantity\": 5\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/invoices/",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"invoices",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
@@ -1073,7 +1125,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlZjZhZGI4NTEzODA3ZWEzMjQzMDgiLCJpYXQiOjE3MDQ2NTcwNTEsImV4cCI6MTcwNDcxNzA1MSwidHlwZSI6ImFjY2VzcyJ9.HZrtxsD6duLacaNfKDkXB8mGT4hrjzHsAm8jbJJtQs8",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlZjZhZGI4NTEzODA3ZWEzMjQzMDgiLCJpYXQiOjE3MDQ3Mzk0MDcsImV4cCI6MTcwNDc5OTQwNywidHlwZSI6ImFjY2VzcyJ9.2em-bksNc0ELi5NjdK5PdeMA5I3m1hYwX_IPRaT9cbo",
 				"type": "string"
 			}
 		]
