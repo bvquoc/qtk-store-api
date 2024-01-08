@@ -18,7 +18,41 @@ const createInvoice = {
   }),
 };
 
+const updateInvoiceStatus = {
+  body: Joi.object().keys({
+    status: Joi.string().valid('pending', 'paid', 'cancelled').required(),
+  }),
+  params: Joi.object().keys({
+    invoiceId: Joi.string().custom(objectId),
+  }),
+};
+
+const getInvoices = {
+  query: Joi.object().keys({
+    customer: Joi.string().custom(objectId),
+    status: Joi.string().valid('pending', 'paid', 'cancelled'),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
+  }),
+};
+
+const getInvoice = {
+  params: Joi.object().keys({
+    invoiceId: Joi.string().custom(objectId),
+  }),
+};
+
+const deleteInvoice = {
+  params: Joi.object().keys({
+    invoiceId: Joi.string().custom(objectId),
+  }),
+};
+
 module.exports = {
   createInvoice,
-  // getInvoices,
+  getInvoice,
+  getInvoices,
+  updateInvoiceStatus,
+  deleteInvoice,
 };
