@@ -556,7 +556,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Van Anh Tuan\",\n    \"email\": \"vat@gm.com\",\n    \"gender\": \"Male\",\n    \"phone\": \"0111222333\",\n    \"birthDate\": \"1/1/2003\",\n    \"address\": {\n        \"province\": \"Ho Chi Minh\",\n        \"district\": \"Thu Duc\",\n        \"ward\": \"Linh Trung\"\n    }\n}",
+							"raw": "{\n    \"id\": \"\",\n    \"name\": \"Van Anh Tuan\",\n    \"email\": \"vat@gm.com\",\n    \"gender\": \"Male\",\n    \"phone\": \"0111222333\",\n    \"birthDate\": \"1/1/2003\",\n    \"address\": {\n        \"province\": \"Ho Chi Minh\",\n        \"district\": \"Thu Duc\",\n        \"ward\": \"Linh Trung\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1112,6 +1112,125 @@
 							"path": [
 								"invoices",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all invoices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/invoices/?customer=658ef4248798d007897a35e4&page=1&limit=15&status=pending",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"invoices",
+								""
+							],
+							"query": [
+								{
+									"key": "customer",
+									"value": "658ef4248798d007897a35e4"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "15"
+								},
+								{
+									"key": "status",
+									"value": "pending"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get invoice by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/invoices/:id",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"invoices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "659c5d680b6032019887312e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"paid\" // paid, cancelled\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{QTKHOST}}/invoices/:id/update-status",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"invoices",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "659c54363c91440503fe70f4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete invoice",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{QTKHOST}}/invoices/:id/",
+							"host": [
+								"{{QTKHOST}}"
+							],
+							"path": [
+								"invoices",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "659c5258910834047ba1ece0"
+								}
 							]
 						}
 					},
