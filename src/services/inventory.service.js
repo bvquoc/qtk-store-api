@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { InventoryImportNote } = require('../models');
+const { InventoryImportNote, InventoryItem } = require('../models');
 const ApiError = require('../utils/ApiError');
 const { productService } = require('./index');
 
@@ -30,6 +30,30 @@ const updateImportStatus = async (id, status) => {
 
   if (status === 'completed') {
     await productService.importProductsFromImportNote(inventoryImportNote.products);
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const product of inventoryImportNote.products) {
+      // eslint-disable-next-line no-await-in-loop
+      const inventoryItem = await InventoryItem.findById(product.id);
+      if (inventoryItem) {
+        Object.assign(inventoryItem, {
+          imports: [...inventoryItem.imports, inventoryImportNote.id],
+          quantity: [...inventoryItem.quantity, { quantity: product.quantity, expiryDate: product.expiryDate }],
+          totalQuantity: inventoryItem.totalQuantity + product.quantity,
+          updatedAt: Date.now(),
+        });
+        // eslint-disable-next-line no-await-in-loop
+        await inventoryItem.save();
+      } else {
+        // eslint-disable-next-line no-await-in-loop
+        await InventoryItem.create({
+          _id: product.id,
+          imports: [inventoryImportNote.id],
+          quantity: [{ quantity: product.quantity, expiryDate: product.expiryDate }],
+          totalQuantity: product.quantity,
+        });
+      }
+    }
   }
   return inventoryImportNote;
 };
@@ -39,8 +63,14 @@ const queryImportNotes = async (filter, options) => {
   return inventoryImportNotes;
 };
 
+const queryInventoryItems = async (filter, options) => {
+  const items = await InventoryItem.paginate(filter, options);
+  return items;
+};
+
 module.exports = {
   importProducts,
   updateImportStatus,
   queryImportNotes,
+  queryInventoryItems,
 };

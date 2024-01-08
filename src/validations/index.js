@@ -6,3 +6,4 @@ module.exports.supplierValidation = require('./supplier.validation');
 module.exports.productValidation = require('./product.validation');
 module.exports.uploadValidation = require('./upload.validation');
 module.exports.inventoryValidation = require('./inventory.validation');
+module.exports.invoiceValidation = require('./invoice.validation');

@@ -39,8 +39,16 @@ const getImportProductsNotes = catchAsync(async (req, res) => {
   res.send(result);
 });
 
+const getInventoryItems = catchAsync(async (req, res) => {
+  const filter = pick(req.query, []);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const result = await inventoryService.queryInventoryItems(filter, options);
+  res.send(result);
+});
+
 module.exports = {
   importProducts,
   updateImportProductsStatus,
   getImportProductsNotes,
+  getInventoryItems,
 };

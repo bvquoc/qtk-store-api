@@ -8,3 +8,4 @@ module.exports.supplierService = require('./supplier.service');
 module.exports.productService = require('./product.service');
 module.exports.uploadService = require('./upload.service');
 module.exports.inventoryService = require('./inventory.service');
+module.exports.invoiceService = require('./invoice.service');
