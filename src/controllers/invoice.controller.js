@@ -101,9 +101,25 @@ const updateInvoiceStatus = catchAsync(async (req, res) => {
   res.send(invoice);
 });
 
+const deleteInvoice = catchAsync(async (req, res) => {
+  let invoice = await invoiceService.getInvoiceById(req.params.invoiceId);
+  if (!invoice) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Invoice not found');
+  }
+  if (invoice.status === 'paid') {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Cannot delete paid invoice');
+  }
+  invoice = await invoiceService.deleteInvoiceById(req.params.invoiceId);
+  if (!invoice) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Invoice not found');
+  }
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
 module.exports = {
   createInvoice,
   getInvoices,
   getInvoiceById,
   updateInvoiceStatus,
+  deleteInvoice,
 };

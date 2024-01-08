@@ -23,10 +23,20 @@ const getInvoicesByCustomerId = async (customerId) => {
   return Invoice.find({ customerId });
 };
 
+const deleteInvoiceById = async (id) => {
+  const invoice = await getInvoiceById(id);
+  if (!invoice) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Invoice not found');
+  }
+  await invoice.remove();
+  return invoice;
+};
+
 module.exports = {
   createInvoice,
   queryInvoices,
   getInvoiceById,
   getInvoicesByStatus,
   getInvoicesByCustomerId,
+  deleteInvoiceById,
 };

@@ -14,13 +14,7 @@ router
 router
   .route('/:invoiceId')
   .get(auth('getInvoices'), validate(invoiceValidate.getInvoice), invoiceController.getInvoiceById)
-  .delete(auth('deleteInvoices'), validate(invoiceValidate.deleteInvoice), (req, res, next) => {
-    try {
-      res.status(200).json({ message: 'deleteInvoice' });
-    } catch (error) {
-      next(error);
-    }
-  });
+  .delete(auth('deleteInvoice'), validate(invoiceValidate.deleteInvoice), invoiceController.deleteInvoice);
 
 router
   .route('/:invoiceId/update-status')
