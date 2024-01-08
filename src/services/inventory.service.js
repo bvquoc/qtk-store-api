@@ -31,6 +31,7 @@ const updateImportStatus = async (id, status) => {
   if (status === 'completed') {
     await productService.importProductsFromImportNote(inventoryImportNote.products);
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const product of inventoryImportNote.products) {
       // eslint-disable-next-line no-await-in-loop
       const inventoryItem = await InventoryItem.findById(product.id);

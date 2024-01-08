@@ -8,6 +8,7 @@ const customerRoute = require('./customer.route');
 const supplierRoute = require('./supplier.route');
 const productRoute = require('./product.route');
 const inventoryRoute = require('./inventory.route');
+const invoiceRoute = require('./invoice.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -48,6 +49,10 @@ const defaultRoutes = [
   {
     path: '/inventories',
     route: inventoryRoute,
+  },
+  {
+    path: '/invoices',
+    route: invoiceRoute,
   },
 ];
 
