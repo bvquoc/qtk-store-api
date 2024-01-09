@@ -2,6 +2,7 @@ const httpStatus = require('http-status');
 const { InventoryImportNote, InventoryItem } = require('../models');
 const ApiError = require('../utils/ApiError');
 const { productService } = require('./index');
+const { it } = require('faker/lib/locales');
 
 const importProducts = async (body) => {
   return InventoryImportNote.create(body);
@@ -65,7 +66,29 @@ const queryImportNotes = async (filter, options) => {
 
 const queryInventoryItems = async (filter, options) => {
   const items = await InventoryItem.paginate(filter, options);
-  return items;
+  const result = {
+    ...items,
+  };
+
+  let itemList = items.results;
+  itemList = itemList.map((item) => {
+    const newItem = {
+      imports: item.imports,
+      quantity: item.quantity,
+      id: item.id,
+    };
+    newItem.totalQuantity = item.quantity.reduce((acc, cur) => acc + cur.quantity, 0);
+    newItem.totalExpiryQuantity = item.quantity.reduce((acc, cur) => {
+      if (cur.expiryDate && cur.expiryDate < Date.now()) {
+        return acc + cur.quantity;
+      }
+      return acc;
+    }, 0);
+    return newItem;
+  });
+
+  result.results = itemList;
+  return result;
 };
 
 module.exports = {
