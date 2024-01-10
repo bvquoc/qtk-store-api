@@ -556,7 +556,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"\",\n    \"name\": \"Van Anh Tuan\",\n    \"email\": \"vat@gm.com\",\n    \"gender\": \"Male\",\n    \"phone\": \"0111222333\",\n    \"birthDate\": \"1/1/2003\",\n    \"address\": {\n        \"province\": \"Ho Chi Minh\",\n        \"district\": \"Thu Duc\",\n        \"ward\": \"Linh Trung\"\n    }\n}",
+							"raw": "{\n    \"userId\": \"658ef4248798d007897a35e4\",\n    \"name\": \"Van Anh Tuan\",\n    \"email\": \"vat@gm.com\",\n    \"gender\": \"Male\",\n    \"phone\": \"0111222333\",\n    \"birthDate\": \"1/1/2003\",\n    \"address\": {\n        \"province\": \"Ho Chi Minh\",\n        \"district\": \"Thu Duc\",\n        \"ward\": \"Linh Trung\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -966,7 +966,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"products\": [\n        {\n            \"id\": \"65906f9f7563d90408a91b9d\",\n            \"quantity\": 10,\n            \"importPrice\": 10000,\n            \"expiryDate\": \"2024-01-31\"\n        }\n    ]\n}",
+							"raw": "{\n    \"products\": [\n        {\n            \"id\": \"65906f9f7563d90408a91b9d\",\n            \"quantity\": 1000,\n            \"importPrice\": 10000,\n            \"expiryDate\": \"2024-01-31\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1014,7 +1014,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "659b2aba5d99c101ba798664"
+									"value": "659e2ef4b42ac8003a9de617"
 								}
 							]
 						}
@@ -1244,7 +1244,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlZjZhZGI4NTEzODA3ZWEzMjQzMDgiLCJpYXQiOjE3MDQ3Mzk0MDcsImV4cCI6MTcwNDc5OTQwNywidHlwZSI6ImFjY2VzcyJ9.2em-bksNc0ELi5NjdK5PdeMA5I3m1hYwX_IPRaT9cbo",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NThlZjZhZGI4NTEzODA3ZWEzMjQzMDgiLCJpYXQiOjE3MDQ4Mjc4ODIsImV4cCI6MTcwNDg4Nzg4MiwidHlwZSI6ImFjY2VzcyJ9.uU8FKyxFnNzYf89J2J8FVSsPPQGPeHclypM0MY4qx14",
 				"type": "string"
 			}
 		]
