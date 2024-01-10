@@ -29,6 +29,24 @@ const importProducts = catchAsync(async (req, res) => {
 });
 const updateImportProductsStatus = catchAsync(async (req, res) => {
   const importProductNote = await inventoryService.updateImportStatus(req.params.importId, req.body.status);
+  if (importProductNote.status === 'completed') {
+    const { products } = importProductNote;
+    for (let i = 0; i < products.length; i++) {
+      const productId = products[i].id;
+      // eslint-disable-next-line no-await-in-loop
+      const product = await productService.getProductById(productId);
+      if (!product) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Product not found');
+      }
+      // eslint-disable-next-line no-await-in-loop
+      await productService.updateProductById(productId, {
+        quantity: {
+          inStock: product.quantity.inStock + products[i].quantity,
+          imported: product.quantity.imported + products[i].quantity,
+        }
+      });
+    }
+  }
   res.send(importProductNote);
 });
 
