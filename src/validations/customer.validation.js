@@ -3,6 +3,7 @@ const { objectId, phoneNumber } = require('./custom.validation');
 
 const createCustomer = {
   body: Joi.object().keys({
+    userId: Joi.string().custom(objectId),
     name: Joi.string().required(),
     email: Joi.string().required().email(),
     phone: Joi.string().required().custom(phoneNumber),

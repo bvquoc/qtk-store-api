@@ -10,6 +10,12 @@ const customerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  userId: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'User',
+    required: true,
+    unique: true,
+  },
   email: {
     type: String,
     required: true,

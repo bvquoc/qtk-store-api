@@ -2,10 +2,19 @@ const httpStatus = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const { customerService } = require('../services');
+const { customerService, userService } = require('../services');
 
 const createCustomer = catchAsync(async (req, res) => {
+  const { userId } = req.body;
+  const user = await userService.getUserById(userId);
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+  }
+  if (user.role !== 'user') {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'User is a staff member');
+  }
   const customer = await customerService.createCustomer(req.body);
+
   res.status(httpStatus.CREATED).send(customer);
 });
 
